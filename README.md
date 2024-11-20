@@ -109,9 +109,5 @@ As part of the delivery tracking system, two types of tracking are being impleme
 
 ---
 
-## **Contributions and Feedback**  
-Contributions and feedback are welcome! Please feel free to raise issues or submit pull requests to improve the project.
-
----
 
 **Note**: This project is a work in progress, and the current features are limited to Phase 6. Future updates will expand functionality significantly.
