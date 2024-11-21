@@ -9,105 +9,133 @@ The project is being developed incrementally, with each phase focusing on a spec
 
 ## **Key Features**  
 1. **Centralized Inventory Management**: Manage inventory levels across multiple channels from a single platform.  
-2. **Real-Time Tracking**: Monitor live delivery progress (under development).  
-   - **General Tracking**: Customers can track their orders in real-time, seeing the general location (city, area) of the delivery agent.  
-   - **Exact Tracking**: Once a specific delivery is assigned (e.g., for customer A1), they will be able to see the precise location of the delivery agent in real-time. The exact tracking system is exclusive to the customer whose order is being delivered at that moment.  
-3. **Sales and Purchase Reports**: Generate detailed analytics for business insights.  
-4. **User-Friendly Interface**: A clean, intuitive frontend using HTML, CSS, JavaScript, and Bootstrap.  
+2. **Real-Time Tracking**: Monitor live delivery progress, giving customers the ability to track their orders in real-time.  
+3. **Inventory Forecasting** (Planned): Utilize basic machine learning to analyze sales trends and recommend which products are in high demand or declining in popularity.  
+4. **Automated Returns Processing** (Planned): Streamline and automate the process of handling returns, ensuring quick and efficient resolution.  
+5. **Sales and Purchase Reports**: Generate detailed analytics for business insights.  
 
 ---
 
 ## **Scope of the Project**  
 ILaMCIMS aims to address the following:  
 - Optimize inventory handling for businesses with a single supplier and multiple sales channels.  
-- Provide tools for real-time order and delivery tracking, including both general and exact tracking options.  
-- Automate inventory forecasting and returns processing.  
+- Provide tools for real-time order and delivery tracking.  
+- Automate inventory forecasting to help businesses make data-driven decisions.  
+- Simplify returns processing to enhance customer satisfaction.  
 - Enable seamless integration with third-party e-commerce platforms.  
 
 This software is ideal for small to medium-scale businesses dealing with low-to-moderate order volumes.  
 
 ---
 
-## **Development Phases**  
-The project is being developed in distinct phases, with a focus on learning and implementation at each stage:  
+## **Setup and Usage Instructions**  
 
-### **Completed Phases**  
-#### **Phase 1: Define Project Scope and Requirements**  
-- **Learning**: Project scoping, agile development basics.  
-- **Practice**: Defined features, created project timeline and milestones.  
+### **1. Backend Setup**  
+#### Prerequisites:  
+- Python installed on your system.  
+- PostgreSQL database hosted on Supabase.  
+- Git installed.  
 
-#### **Phase 2: Set Up Development Environment**  
-- **Learning**: Git version control, IDE setup (VS Code), project structuring.  
-- **Practice**: Initialized Git repository and structured project folders.  
+#### Steps:  
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/your-username/ILaMCIMS.git
+   cd ILaMCIMS
 
-#### **Phase 3: Database Design (SQL)**  
-- **Learning**: ER diagram creation, SQL basics.  
-- **Practice**: Designed schema for inventory, orders, and logistics tracking.  
+2.Create a Virtual Environment:
+python -m venv ILaMCIMS
+source ILaMCIMS/bin/activate  # On Windows: ILaMCIMS\Scripts\activate
 
-#### **Phase 4: Build the Database (SQL)**  
-- **Learning**: Advanced SQL operations, query optimization.  
-- **Practice**: Created complex queries to fetch inventory and shipment data.  
+3.Install Project Dependencies:
+pip install -r requirements.txt
 
-#### **Phase 5: Backend Development - Basic API in FastAPI**  
-- **Learning**: REST API basics, FastAPI framework.  
-- **Practice**: Developed APIs for managing products and inventory.  
+4.Set Up Environment Variables:
+Create a .env file in the project directory and add the following variables:
+SUPABASE_URL=https://cvkyeqhdiimxroujaojn.supabase.co
+SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2a3llcWhkaWlteHJvdWphb2puIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzA5MjEyNzIsImV4cCI6MjA0NjQ5NzI3Mn0.CR3w_pKHwgOP0EwKpljruHoFzoJYkytacHvxFwODYlY
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2a3llcWhkaWlteHJvdWphb2puIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMDkyMTI3MiwiZXhwIjoyMDQ2NDk3MjcyfQ.ihPBPuJdxfp7laTxWJYZDMrVHslQItl6X0o_BtS3Gd8
 
-#### **Phase 6: Frontend Basics (HTML/CSS/JavaScript/Bootstrap)**  
-- **Learning**: Basics of web development using HTML, CSS, JavaScript, and Bootstrap.  
-- **Practice**:  
-  - Designed a UI to display and manage inventory.  
-  - Created sections for Dashboard, Inventory, Orders, Sales Channels, and Reports.  
+5.Run Database Migrations (if applicable):
+alembic upgrade head  # Or the specific migration tool for the project
+
+6.Start the Backend Server:
+uvicorn main:app --reload
+
+### **Next Steps After Starting the Server**
+
+1. **Access the API Documentation**:
+   Once the server is running, you can visit the automatically generated documentation page by opening your browser and navigating to:
+   http://localhost:8000/docs
+This page provides an interactive API documentation, where you can test each of the available API endpoints directly.
+
+2. **API Endpoints**:
+The FastAPI app includes several routes based on the routers you've registered in the `main.py` file. These are grouped by their respective prefixes:
+- **Customers**: `/customers`
+- **Order Items**: `/order_items`
+- **Products**: `/products`
+- **Orders**: `/orders`
+- **Product Channels**: `/product_channels`
+- **Sales Channels**: `/sales_channels`
+- **Shipments**: `/shipments`
+
+3. **Performing CRUD Operations**:
+You can use the API documentation to interact with each of the endpoints (GET, POST, PUT, DELETE) for managing the resources. Here's how you can interact with each:
+- **GET**: Retrieve data, such as all products or orders.
+- **POST**: Add new records, such as creating a new customer or adding an order.
+- **PUT**: Update existing records, like modifying a product’s price or quantity.
+- **DELETE**: Remove records, such as deleting an order item.
+
+For example, to view all products, you would navigate to:
+http://localhost:8000/products
+
+yaml
+Copy code
+Or use the **POST** method to add a new product by providing the required details.
+
+4. **Testing the API with cURL/Postman**:
+Alternatively, you can use tools like **cURL** or **Postman** to manually make requests to the API. For example:
+- **GET** request to retrieve all products:
+  ```bash
+  curl http://localhost:8000/products
+  ```
+- **POST** request to add a new product:
+  ```bash
+  curl -X 'POST' \
+    'http://localhost:8000/products' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "name": "New Product",
+    "quantity": 10,
+    "price": 50
+  }'
+  ```
+
+5. **Verify Data in Supabase**:
+After making requests to the API (such as adding or updating records), you can log into your Supabase dashboard and check the corresponding tables (like `products`, `orders`, etc.) to ensure that the data is being stored and updated as expected.
 
 ---
 
-### **Current Status**  
-- **Phase 6**: Frontend development is **in progress**, with core UI elements for inventory management being designed and implemented.  
-- **Phase 7 onwards**: Upcoming phases, including real-time tracking (General and Exact), inventory forecasting, and integration features, are under development.  
+### **Conclusion**
+By visiting the API documentation at `http://localhost:8000/docs`, you can easily interact with your FastAPI application, perform CRUD operations on the database, and check that everything is working properly.
 
 ---
 
-### **Learnings So Far**  
-- Fundamentals of agile project planning and scoping.  
-- SQL schema design   
-- REST API development using FastAPI.  
-- Frontend basics with a focus on Bootstrap for responsive design.  
+## **Technology Stack**
+- **Backend**: Python, FastAPI
+- **Frontend**: HTML, CSS, JavaScript, Bootstrap
+- **Database**: PostgreSQL (hosted on Supabase)
+- **Map Integration**: Google Maps API for real-time tracking
 
 ---
 
-### **Real-Time Tracking (General and Exact Tracking)**  
-
-As part of the delivery tracking system, two types of tracking are being implemented:  
-
-1. **General Tracking**:  
-   - Customers can track their orders by receiving updates on the general location of the delivery agent (such as city or area).  
-   - This provides a high-level view of the delivery status, allowing customers to know when their package is in their vicinity.  
-
-2. **Exact Tracking**:  
-   - When the delivery agent starts delivering a specific order (e.g., for customer A1), that customer will be able to see the precise, real-time location of the delivery agent.  
-   - **Exclusive Tracking**: This exact tracking is exclusive to the customer whose order is being delivered. For example, while A1 can see the agent's exact location, customers A2 through A20 will only see the general location.  
-   - As the delivery agent completes each delivery, the next customer (e.g., A2) will be able to start tracking the agent's exact location.  
-   - This ensures that each customer gets a personalized and secure tracking experience.  
+## **Future Plans**
+1. Real-time tracking system implementation.
+2. Advanced inventory forecasting using machine learning.
+3. Seamless integration with third-party platforms.
+4. Deployment on cloud platforms like Heroku or AWS.
 
 ---
 
-## **Technology Stack**  
-- **Backend**: Python, FastAPI  
-- **Frontend**: HTML, CSS, JavaScript, Bootstrap  
-- **Database**: PostgreSQL (hosted on Supabase)  
-- **Map Integration**: Google Maps API for real-time tracking  
-
----
+**Note**: This project is a work in progress, and the current features are limited to Phase 6.
 
 
----
-
-## **Future Plans**  
-1. Real-time tracking system (General and Exact) implementation.  
-2. Advanced inventory forecasting using machine learning.  
-3. Seamless integration with third-party platforms.  
-4. Deployment on cloud platforms like Heroku or AWS.  
-
----
-
-
-**Note**: This project is a work in progress, and the current features are limited to Phase 6. Future updates will expand functionality significantly.
