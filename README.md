@@ -67,7 +67,10 @@ The project is being developed in distinct phases, with a focus on learning and 
 - **Practice**:
    - Created and populated tables in PostgreSQL (Supabase).
    - Used SQL queries to fetch and modify data from the database, ensuring smooth integration with the backend.
+   - 
+ ![dd](https://github.com/user-attachments/assets/be6feb0a-45b4-4f52-b13a-cfc246a85efc)
 
+  
 #### **Phase 5: Backend Development - Basic API in FastAPI**
 - **Learning**:
    - **FastAPI Framework**: Building REST APIs using FastAPI for handling CRUD operations.
