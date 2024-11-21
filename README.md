@@ -27,6 +27,105 @@ ILaMCIMS aims to address the following:
 This software is ideal for small to medium-scale businesses dealing with low-to-moderate order volumes.  
 
 ---
+## **Development Phases**
+The project is being developed in distinct phases, with a focus on learning and implementation at each stage:
+
+### **Completed Phases**
+
+#### **Phase 1: Define Project Scope and Requirements**
+- **Learning**: 
+   - **Project scoping**: Understanding the problem and defining the solution.
+   - **Agile Development**: Organizing the project into manageable phases.
+   - **Project Milestones**: Setting goals for each phase and identifying necessary resources.
+- **Practice**: 
+   - Defined features and functionalities for the software.
+   - Established a timeline and identified key technologies for backend and database management.
+
+#### **Phase 2: Set Up Development Environment**
+- **Learning**:
+   - **Version Control**: Using Git for version control.
+   - **IDE Setup**: Setting up VS Code for Python development.
+   - **Project Structuring**: Organizing the project directory and files.
+- **Practice**: 
+   - Initialized the Git repository and committed the initial project structure.
+   - Created folder structures for organizing the project: `models`, `routes`, `scripts`, `services`, `utils`.
+
+#### **Phase 3: Database Design (SQL)**
+- **Learning**:
+   - **Database Schema Design**: Understanding how to structure data for business needs.
+   - **Entity-Relationship Diagrams (ERD)**: Visualizing relationships between tables and entities.
+   - **SQL Basics**: Learning how to write SQL queries for creating tables and inserting data.
+- **Practice**: 
+   - Designed the database schema, which includes the following tables:
+     - `customers`, `order_items`, `orders`, `product_channels`, `products`, `sales_channels`, `shipments`.
+   - Implemented basic SQL operations like `CREATE`, `INSERT`, `SELECT`, `UPDATE`.
+
+#### **Phase 4: Build the Database (SQL)**
+- **Learning**:
+   - **SQL Operations**: Deep dive into SQL for database operations like joins, queries, and indexing.
+   - **Query Optimization**: Writing efficient queries for data retrieval.
+- **Practice**:
+   - Created and populated tables in PostgreSQL (Supabase).
+   - Used SQL queries to fetch and modify data from the database, ensuring smooth integration with the backend.
+
+#### **Phase 5: Backend Development - Basic API in FastAPI**
+- **Learning**:
+   - **FastAPI Framework**: Building REST APIs using FastAPI for handling CRUD operations.
+   - **Routing**: Creating routes to handle API requests and organizing them using routers.
+   - **PostgreSQL Integration**: Connecting FastAPI with a PostgreSQL database (Supabase).
+   - **Handling JSON**: Understanding request and response formats for APIs.
+- **Practice**:
+   - Developed backend APIs to handle CRUD operations for the following resources:
+     - `products`, `orders`, `order_items`, `customers`, `sales_channels`, `product_channels`, `shipments`.
+   - Implemented GET, POST, PUT, and DELETE operations for each table.
+   - Tested API endpoints to ensure the functionality of the database interactions.
+
+---
+
+### **Current Status**
+- **Phase 6**: Frontend development is **in progress**, with core UI elements for inventory management being designed and implemented.
+- **Phase 7 onwards**: Upcoming phases, including real-time tracking, inventory forecasting, and integration features, are under development.
+
+---
+
+### **Learnings So Far**
+
+#### **Phase 1: Define Project Scope and Requirements**
+- Gained insights into defining the project’s features and scope.
+- Understood how to break down a project into manageable phases and tasks.
+
+#### **Phase 2: Set Up Development Environment**
+- Learned to structure a project and organize files in a way that supports scalability.
+- Mastered setting up version control with Git to track and manage changes in the project.
+
+#### **Phase 3: Database Design (SQL)**
+- Designed an efficient relational database schema using SQL.
+- Understood the importance of properly structuring tables and relationships for ease of data retrieval and manipulation.
+
+#### **Phase 4: Build the Database (SQL)**
+- Refined SQL querying skills to handle data in real-time applications.
+- Implemented database population and data verification through queries.
+
+#### **Phase 5: Backend Development - Basic API in FastAPI**
+- Learned to build RESTful APIs with FastAPI to handle CRUD operations.
+- Gained experience integrating FastAPI with a PostgreSQL database hosted on Supabase.
+- Familiarized with API testing tools (Postman, cURL) for verifying endpoint functionality.
+
+---
+
+### **Tools and Technologies Used**
+- **Backend**: 
+   - **Python**: Core programming language for backend development.
+   - **FastAPI**: Framework for building APIs.
+   - **PostgreSQL**: Relational database system, used in combination with **Supabase** for cloud hosting.
+   - **Uvicorn**: ASGI server to run FastAPI applications.
+   - **cURL/Postman**: Tools used for testing API endpoints.
+
+- **Version Control**: 
+   - **Git**: Used for version control and collaboration.
+
+- **Database Management**:
+   - **Supabase**: PostgreSQL as a managed service for database hosting.
 
 ## **Setup and Usage Instructions**  
 
