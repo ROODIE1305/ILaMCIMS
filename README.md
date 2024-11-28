@@ -240,3 +240,7 @@ By visiting the API documentation at `http://localhost:8000/docs`, you can easil
 
 **Note**: This project is a work in progress, and the current features are limited to Phase 6.
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b94ef631f5333295580cdf46980188a68e34c9a4
