@@ -31,7 +31,7 @@ def post_products(new_products: add_products):
 @router.put("/{product_id}", response_model=see_products)
 def put_products(product_id: int, change_product: update_products):
     try:
-        response = supabase.table("products").update(change_product.dict(exclude_none=True)).eq("id", product_id).execute()
+        response = supabase.table("products").update(change_product.dict(exclude_none=True)).eq("product_id", product_id).execute()
         if not response.data:
             raise HTTPException(status_code=404, detail="Unable to update the existing product")
         return see_products(**response.data[0])  # Ensuring data matches the model
@@ -42,7 +42,7 @@ def put_products(product_id: int, change_product: update_products):
 @router.delete("/{product_id}")
 def delete_products(product_id: int):
     try:
-        response = supabase.table("products").delete().eq("id", product_id).execute()
+        response = supabase.table("products").delete().eq("product_id", product_id).execute()
         if not response.data:  # Fix condition
             raise HTTPException(status_code=404, detail="Unable to delete target id")
         return {"message": "Target id deleted successfully"}

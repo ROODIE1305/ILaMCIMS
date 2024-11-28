@@ -18,25 +18,29 @@ def get_customers():
         raise HTTPException(status_code=500, detail=f"Error fetching customers or no such table with that name: {str(e)}")
 
 #post method
-@router.post("/", response_model= Customers)
+@router.post("/", response_model=Customers)
 def create_customers(Customer: CustomersCreate):
-   try:
-       response = supabase.table("customers").insert(Customer.dict()).execute()
-       if not response.data:
-         raise HTTPException(status_code=404, detail="Failed to add the new customer")
-       return response.data[0] #checkpoint
-   except Exception as e:
-       raise HTTPException(status_code=500, detail=f"Error creating look into the code: {str(e)}")
+    try:
+        # Insert data without customer_id, which is auto-generated in the database
+        response = supabase.table("customers").insert(Customer.dict(exclude_unset=True)).execute()
+        if not response.data:
+            raise HTTPException(status_code=404, detail="Failed to add the new customer")
+        return response.data[0]  # Return the created customer
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error creating customer: {str(e)}")
 
 #put method
 @router.put("/{customer_id}", response_model= Customers)
 def modify_customers(customer_id: int, Customers_change: CustomersUpdate):
     try:
         #checkpoint
-        response = supabase.table("customers").update(Customers_change.dict(exclude_none=True)).eq("id", customer_id).execute()
+        response = supabase.table("customers").update(Customers_change.dict(exclude_none=True)).eq("customer_id", customer_id).execute()
         if not response.data:
             raise HTTPException(status_code=404, detail="Customer not found")
-        return response.data[0]
+        return {
+            "message": "Customer details updated successfully",
+            "updated_customer": response.data[0]
+        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"/Unable to modify the customer data: {str(e)}")
     
@@ -45,7 +49,7 @@ def modify_customers(customer_id: int, Customers_change: CustomersUpdate):
 def delete_customers(customer_id: int):
     try:
         #checkpoint
-        response = supabase.table("customers").delete().eq("id", customer_id).execute()
+        response = supabase.table("customers").delete().eq("customer_id", customer_id).execute()
         if response.data == 0:
             raise HTTPException(status_code=404, detail="No such customer")
         return {"message": "Customer data removed suceesfully"}

@@ -20,7 +20,7 @@ def get_order_items():
 @router.post("/", response_model= see_order_items)
 def post_order_items(items_ordered: create_order_items):
    try:
-       response = supabase.table("order_items").insert(items_ordered.dict()).execute()
+       response = supabase.table("order_items").insert(items_ordered.dict(exclude_unset=True)).execute()
        if not response.data:
          raise HTTPException(status_code=404, detail="Unable to add new ordered item")
        return response.data[0] #checkpoint
