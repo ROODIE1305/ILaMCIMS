@@ -10,7 +10,7 @@ supabase = get_supabase_client()
 def get_orders():
     try:
         response = supabase.table("orders").select("*").execute()
-        if not response.data:  # Simplified check for empty response
+        if not response.data:  
             raise HTTPException(status_code=404, detail="No current orders found")
         return response.data
     except Exception as e:
@@ -20,7 +20,7 @@ def get_orders():
 @router.post("/", response_model=see_orders)
 def post_orders(order: create_orders):
     try:
-        response = supabase.table("orders").insert(order.dict()).execute()
+        response = supabase.table("orders").insert(order.dict(exclude_unset=True)).execute()
         if not response.data:
             raise HTTPException(status_code=400, detail="Unable to create order")
         return response.data[0]

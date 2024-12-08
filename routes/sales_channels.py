@@ -23,7 +23,7 @@ def post_sales_channels(new_channel: add_sales_channels):
         response = supabase.table("sales_channels").insert(new_channel.dict()).execute()
         if not response.data:
             raise HTTPException(status_code=404, detail="Unable to add new sales channel")
-        return response.data[0]  # Return the inserted record
+        return response.data[0]  
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
 

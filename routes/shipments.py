@@ -17,17 +17,17 @@ def get_shipments():
       raise HTTPException(status_code=500, detail="no such table exist")
    
 #post method
-@router.post('/', response_model= see_shipments)
-def post_shipments(new_shipment= add_shipments):
-   try:
-      response = supabase.table("shipments").insert(new_shipment.dict()).execute()
-      if not response.data:
-         raise HTTPException(status_code=404, detail="Unable to add new sales channel")
-      else:
-         print(response.data)
-         return {"message": "Shipment added successfully"}
-   except Exception as e:
-      raise HTTPException(status_code=500, detail="No such table named shipmentss")
+@router.post('/', response_model=see_shipments)
+def post_shipments(new_shipment: add_shipments):
+    try:
+        print("Received data:", new_shipment.dict())
+        response = supabase.table("shipments").insert(new_shipment.dict(exclude_unset=True)).execute()
+        print("Supabase response:", response.data)
+        if not response.data:
+            raise HTTPException(status_code=404, detail="Unable to add new shipment")
+        return {"message": "Shipment added successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error adding shipment: {str(e)}")
    
 #put method
 @router.put('/{shipment_id}', response_model= see_shipments)

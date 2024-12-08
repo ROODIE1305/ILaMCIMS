@@ -1,7 +1,7 @@
 from pydantic import BaseModel # type: ignore
 from pydantic import EmailStr # type: ignore
 
-class Customers(BaseModel):
+class see_customers(BaseModel):
     customer_id: int
     name: str
     email: str
@@ -12,13 +12,13 @@ class Customers(BaseModel):
     class Config:
         from_attributes = True
 
-class CustomersCreate(BaseModel):
+class add_customers(BaseModel):
     name: str
     email: EmailStr
     phone: str 
     address: str
 
-class CustomersUpdate(BaseModel):
+class update_customers(BaseModel):
     name: str
     email: EmailStr
     phone: str

@@ -21,6 +21,9 @@ class add_shipments(BaseModel):
 
     class Config:
         arbitrary_types_allowed = True
+        json_encoders = {
+            datetime: lambda dt: dt.isoformat()  
+        }
 
 class update_shipments(BaseModel):
     order_id: int

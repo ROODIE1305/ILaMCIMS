@@ -8,7 +8,7 @@ class see_product_channels(BaseModel):
     discount: Decimal
 
     class Config:
-        arbitrary_types_allowed = True  # Allows `Decimal` for precise monetary values
+        arbitrary_types_allowed = True  
 
 
 class add_product_channels(BaseModel):
@@ -20,7 +20,7 @@ class add_product_channels(BaseModel):
         arbitrary_types_allowed = True
 
 
-class update_product_channels(BaseModel):  # All fields required for updates
+class update_product_channels(BaseModel):
     channel_id: int
     channel_price: Decimal
     discount: Decimal
