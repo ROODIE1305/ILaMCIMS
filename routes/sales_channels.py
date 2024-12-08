@@ -32,7 +32,7 @@ def post_sales_channels(new_channel: add_sales_channels):
 @router.put("/{channel_id}", response_model=see_sales_channels)
 def put_sales_channels(channel_id: int, change_product: update_sales_channels):
     try:
-        response = supabase.table("sales_channels").update(change_product.dict()).eq("id", channel_id).execute()
+        response = supabase.table("sales_channels").update(change_product.dict()).eq("channel_id", channel_id).execute()
         if not response.data:
             raise HTTPException(status_code=404, detail="Unable to update the existing channel")
         return response.data[0]
@@ -44,7 +44,7 @@ def put_sales_channels(channel_id: int, change_product: update_sales_channels):
 @router.delete("/{channel_id}")
 def delete_sales_channels(channel_id: int):
     try:
-        response = supabase.table("sales_channels").delete().eq("id", channel_id).execute()
+        response = supabase.table("sales_channels").delete().eq("channel_id", channel_id).execute()
         if not response.data:
             raise HTTPException(status_code=404, detail="Target ID not found.")
         return {"message": "Target ID deleted successfully"}

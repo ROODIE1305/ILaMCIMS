@@ -33,7 +33,7 @@ def post_shipments(new_shipment= add_shipments):
 @router.put('/{shipment_id}', response_model= see_shipments)
 def put_shipments(shipment_id: int, modify_shipment= add_shipments):
    try:
-      response = supabase.table("shipments").update(modify_shipment.dict()).eq("id", shipment_id).execute()
+      response = supabase.table("shipments").update(modify_shipment.dict()).eq("shipment_id", shipment_id).execute()
       if not response.data:
         raise HTTPException(status_code=404, detail="Unable to update the exiting shipment")
       else:
@@ -46,7 +46,7 @@ def put_shipments(shipment_id: int, modify_shipment= add_shipments):
 @router.delete('/{shipment_id}')
 def delete_shipments(shipment_id: int):
    try:
-      response = supabase.table("shipments").delete().eq("id", shipment_id).execute()
+      response = supabase.table("shipments").delete().eq("shipment_id", shipment_id).execute()
       if not response.data or response.data == 0:
          raise HTTPException(status_code=404, detail="Unable to delete target id ")
       else:

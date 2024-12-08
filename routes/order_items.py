@@ -32,7 +32,7 @@ def post_order_items(items_ordered: create_order_items):
 def put_order_items(order_item_id: int, new_oder_item: update_order_items):
     try:
         #checkpoint
-        response = supabase.table("order_items").update(new_oder_item.dict(exclude_none=True)).eq("id", order_item_id).execute()
+        response = supabase.table("order_items").update(new_oder_item.dict(exclude_none=True)).eq("order_item_id", order_item_id).execute()
         if not response.data:
             raise HTTPException(status_code=404, detail="Customer not found")
         return response.data[0]
@@ -44,7 +44,7 @@ def put_order_items(order_item_id: int, new_oder_item: update_order_items):
 def delete_order_items(order_item_id: int):
     try:
         #checkpoint
-        response = supabase.table("order_items").delete().eq("id", order_item_id).execute()
+        response = supabase.table("order_items").delete().eq("order_item_id", order_item_id).execute()
         if response.data == 0:
             raise HTTPException(status_code=404, detail="No such item has been ordered")
         return {"message": "ordered items data removed suceesfully"}

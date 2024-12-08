@@ -33,7 +33,7 @@ def post_product_channels(pro_cha: add_product_channels):
 @router.put("/{product_id}", response_model=see_product_channels)
 def put_product_channels(product_id: int, update: update_product_channels):
     try:
-        response = supabase.table("product_channels").update(update.dict()).eq("id", product_id).execute()
+        response = supabase.table("product_channels").update(update.dict()).eq("product_id", product_id).execute()
         if not response.data:
             raise HTTPException(status_code=404, detail="Product channel not found.")
         return response.data[0]
@@ -45,7 +45,7 @@ def put_product_channels(product_id: int, update: update_product_channels):
 @router.delete("/{product_id}")
 def delete_product_channels(product_id: int):
     try:
-        response = supabase.table("product_channels").delete().eq("id", product_id).execute()
+        response = supabase.table("product_channels").delete().eq("product_id", product_id).execute()
         if not response.data:
             raise HTTPException(status_code=404, detail="Product channel ID not found.")
         return {"message": "Product channel deleted successfully."}
