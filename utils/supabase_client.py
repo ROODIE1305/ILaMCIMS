@@ -13,6 +13,6 @@ def get_supabase_client() -> Client:
     if not url or not key:
         raise ValueError("Supabase URL or Service Role Key is missing from environment variables.")
 
-    supabase= create_client(url, key)
+    supabase = create_client(url, key)
 
     return supabase
