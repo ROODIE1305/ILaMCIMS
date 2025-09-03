@@ -153,9 +153,11 @@ pip install -r requirements.txt
 
 4.Set Up Environment Variables:
 Create a .env file in the project directory and add the following variables:
-SUPABASE_URL=https://cvkyeqhdiimxroujaojn.supabase.co
-SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2a3llcWhkaWlteHJvdWphb2puIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzA5MjEyNzIsImV4cCI6MjA0NjQ5NzI3Mn0.CR3w_pKHwgOP0EwKpljruHoFzoJYkytacHvxFwODYlY
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2a3llcWhkaWlteHJvdWphb2puIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMDkyMTI3MiwiZXhwIjoyMDQ2NDk3MjcyfQ.ihPBPuJdxfp7laTxWJYZDMrVHslQItl6X0o_BtS3Gd8
+SUPABASE_URL=#your_supabase_url
+SUPABASE_KEY=#your_supabse_public_key
+SUPABASE_SERVICE_ROLE_KEY=#optional
+
+Note: Make sure to iclude your .env file in .gitignore
 
 5.Run Database Migrations (if applicable):
 alembic upgrade head  # Or the specific migration tool for the project
