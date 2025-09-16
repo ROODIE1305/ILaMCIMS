@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException # type: ignore
-from utils.supabase_client import get_supabase_client
-from models.sales_channels import see_sales_channels, add_sales_channels, update_sales_channels 
+from backend.utils.supabase_client import get_supabase_client
+from backend.models.sales_channels import see_sales_channels, add_sales_channels, update_sales_channels 
 
 router = APIRouter()
 supabase = get_supabase_client()

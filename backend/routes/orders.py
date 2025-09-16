@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException # type: ignore
-from utils.supabase_client import get_supabase_client
-from models.orders import see_orders, create_orders, update_orders
+from backend.utils.supabase_client import get_supabase_client
+from backend.models.orders import see_orders, create_orders, update_orders
 
 router = APIRouter()
 supabase = get_supabase_client()

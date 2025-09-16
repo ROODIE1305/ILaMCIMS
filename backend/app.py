@@ -1,9 +1,9 @@
 from fastapi import FastAPI, Request # type: ignore
-from routes import customers, order_items, products, orders, product_channels, sales_channels, shipments, dashboard
+from backend.routes import customers, order_items, products, orders, product_channels, sales_channels, shipments, dashboard
 from fastapi.responses import HTMLResponse # type: ignore
 from fastapi.templating import Jinja2Templates # type: ignore
 from fastapi.middleware.cors import CORSMiddleware # type: ignore
-from routes import dashboard  
+from backend.routes import dashboard  
 import os
 
 app = FastAPI() 

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException # type: ignore
-from utils.supabase_client import get_supabase_client
+from backend.utils.supabase_client import get_supabase_client
 
 router = APIRouter()
 supabase = get_supabase_client()
