@@ -1,2 +1,9 @@
 .env
 pyvenv.cfg
+supabase.gz
+test.py
+env
+venvs/
+venvs
+.DS_Store
+Thumbs.db
